@@ -1,21 +1,14 @@
 import React, {Component} from 'react'
-
+import CommentList from './CommentList';
+import Button from './Button'
 export default class Article extends Component {
     state = {
-        isOpen: false
+        isOpen: false,
+        commentsIsOpen: false
     }
-/*
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOpen: props.defaultOpen
-        }
-    }
-*/
 
     render() {
-        const {article} = this.props
-        console.log('---', 123)
+        const {article} = this.props;
         return (
             <div>
                 <h3 onClick={this.handleClick}>{article.title}</h3>
@@ -25,12 +18,34 @@ export default class Article extends Component {
     }
 
     getBody() {
-        if (!this.state.isOpen) return null
+        if (!this.state.isOpen) return null;
 
         return (
             <section>
                 {this.props.article.text}
+                <br />
+                {this.getCommentsButton()}
+                {this.getComments()}
             </section>
+        )
+    }
+
+    getCommentsButton(){
+        const {article} = this.props;
+        if(!article.comments){
+            return null;
+        }
+        const text = this.state.commentsIsOpen ? 'Скрыть комментарии' : 'Показать комментарии';
+        return <Button text={text} onClick={this.changeCommentState}/>
+    }
+
+    getComments(){
+        const {article} = this.props;
+        if(!article.comments || !this.state.commentsIsOpen){
+            return null;
+        }
+        return(
+            <CommentList comments={article.comments} />
         )
     }
 
@@ -38,5 +53,11 @@ export default class Article extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         })
+    }
+
+    changeCommentState = (ev) => {
+        this.setState({
+            commentsIsOpen: !this.state.commentsIsOpen
+        });
     }
 }
