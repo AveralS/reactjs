@@ -4,7 +4,8 @@ import Button from './Button'
 export default class Article extends Component {
     state = {
         isOpen: false,
-        commentsIsOpen: false
+       //Лучше внести этот стейт в CommentList
+       commentsIsOpen: false
     }
 
     render() {
@@ -41,6 +42,7 @@ export default class Article extends Component {
 
     getComments(){
         const {article} = this.props;
+    //Я б эту проверку спрятал в CommentList
         if(!article.comments || !this.state.commentsIsOpen){
             return null;
         }
