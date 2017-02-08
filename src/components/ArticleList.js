@@ -4,6 +4,7 @@ import accordion from '../decorators/accordion'
 
 class ArticleList extends Component {
     static propTypes = {
+        //А вот сюда еще и из декоратора данные приходят
         articles: PropTypes.array
     };
 
