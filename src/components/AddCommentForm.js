@@ -20,6 +20,7 @@ class AddCommentForm extends Component{
     }
 
     handleSubmit = (e) => {
+        //Не лезь в DOM. держи значения в стейте, хочешь обнулить - просто делаешь setState с ‘’ значениями
         e.preventDefault();
         this.setState({});
         findDOMNode(this.commentForm).reset();
