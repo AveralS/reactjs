@@ -5,12 +5,16 @@ import accordion from '../decorators/accordion'
 class ArticleList extends Component {
     render() {
         const {articles, toggleOpenItem, isOpenItem} = this.props
-        const articleElements = articles.map((article) => <li key={article.id}>
-            <Article
-                article={article}
-                isOpen={isOpenItem(article.id)}
-                toggleOpen={toggleOpenItem(article.id)}/>
-        </li>)
+        const articleElements = articles.map((article) => {
+            return(
+                <li key={article.id}>
+                <Article
+                        article={article}
+                        isOpen={isOpenItem(article.id)}
+                        toggleOpen={toggleOpenItem(article.id)}/>
+                </li>
+            );
+        })
         return (
             <ul>
                 {articleElements}
