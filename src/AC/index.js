@@ -1,4 +1,4 @@
-import {INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, LOAD_ALL_ARTICLES, START, SUCCESS, FAIL} from '../constants'
+import {INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, LOAD_ALL_ARTICLES, START, SUCCESS, FAIL, ADD_ID, ADD_COMMENT} from '../constants'
 import $ from 'jquery'
 
 
@@ -56,4 +56,24 @@ export function loadAllArticlesThunk() {
                 }))
         }, 1000)
     }
+}
+
+export function addId(item){
+    return {
+        type: ADD_ID,
+        payload: item
+    }
+}
+
+export function addComment(item){
+    return (dispatch) => {
+        dispatch({
+            type: ADD_ID,
+            payload: item
+        });
+        dispatch({
+            type: ADD_COMMENT,
+            payload: item
+        });
+    };
 }
