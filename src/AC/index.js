@@ -66,14 +66,8 @@ export function addId(item){
 }
 
 export function addComment(item){
-    return (dispatch) => {
-        dispatch({
-            type: ADD_ID,
-            payload: item
-        });
-        dispatch({
-            type: ADD_COMMENT,
-            payload: item
-        });
-    };
+    return {
+        type: ADD_COMMENT,
+        payload: item
+    }
 }
