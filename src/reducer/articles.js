@@ -27,6 +27,7 @@ export default (state = defaultState, action) => {
         case ADD_COMMENT:
             let data = {...state};
             const{articleId, id: commentId} = payload;
+            //вот здесь ты, на самом деле, мутируешь стейт. Все просто меняется по ссылке 
             data.entities[articleId].comments.push(commentId);
             return data;
     }
