@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect'
 import {mapToArr} from '../utils'
+import {commentsSelectorFactory} from './comments.js'
 
 const articlesGetter = state => state.articles.entities
 const filtersGetter = state => state.filters
@@ -21,4 +22,7 @@ export const filteredArticlesSelector = createSelector(articlesGetter, filtersGe
 export const articleSelectorFactory = () => createSelector(articlesGetter, idGetter, (entities, id) => {
     console.log('---', 'article selector', id)
     return entities.get(id)
-})
+});
+
+export {commentsSelectorFactory};
+
