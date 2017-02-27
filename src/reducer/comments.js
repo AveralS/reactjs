@@ -27,6 +27,7 @@ export default (state = defaultState, action) => {
             return state
                 .set('isLoading', false)
                 .updateIn(['entities'], comments => {
+                    //почему .concat ? это же Map - используй .merge
                     return comments.concat(arrayToMap(response, CommentModel))
                 });
     }
