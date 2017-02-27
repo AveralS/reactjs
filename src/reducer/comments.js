@@ -19,6 +19,7 @@ export default (state = defaultState, action) => {
     switch (type) {
         case ADD_COMMENT:
             return state.updateIn(['entities'], comments => {
+                //почему new Map и .concat?
                 return comments.concat(new Map({...payload.comment, id: randomId}))
             });
         case LOAD_ARTICLE_COMMENTS + START:
