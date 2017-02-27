@@ -11,6 +11,7 @@ const ArticleModel = Record({
     comments: [],
     isLoading: false,
     isLoaded: false,
+    //а loading?
     commentsLoaded: false
 })
 
